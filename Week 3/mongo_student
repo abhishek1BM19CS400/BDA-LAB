@@ -1,0 +1,33 @@
+> use student
+switched to db student
+
+> db.student.insert({Roll: 10, Name: "Abhi", age: 21, contact: "7090101015", email: "abhishek@gmail.com"})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({Roll: 11, Name: "ABC", age: 20, contact: "9263532389", email: "abc@gmail.com"})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({Roll: 12, Name: "shek", age: 21, contact: "7788996655", email: "shek@gmail.com"})
+WriteResult({ "nInserted" : 1 })
+> db.student.insert({Roll: 13, Name: "ram", age: 20, contact: "1234123412", email: "ram@gmail.com"})
+WriteResult({ "nInserted" : 1 })
+
+> db.student.update({Roll:10}, {$set: {email: "abhishekram393@gmail.com"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+> db.student.update({Roll:11}, {$set: {Name: "FEM"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+> show collections
+student
+
+> db.student.find()
+{ "_id" : ObjectId("60680b97bda44981d67614b6"), "Roll" : 10, "Name" : "Abhi", "age" : 21, "contact" : "7090101015", "email" : "abhishekram393@gmail.com" }
+{ "_id" : ObjectId("60680c09bda44981d67614b7"), "Roll" : 11, "Name" : "FEM", "age" : 20, "contact" : "9263532389", "email" : "abc@gmail.com" }
+{ "_id" : ObjectId("60680c4fbda44981d67614b8"), "Roll" : 12, "Name" : "shek", "age" : 21, "contact" : "7788996655", "email" : "shek@gmail.com" }
+{ "_id" : ObjectId("60680c78bda44981d67614b9"), "Roll" : 13, "Name" : "ram", "age" : 20, "contact" : "1234123412", "email" : "ram@gmail.com" }
+
+> mongoexport --collection=student --db=student --out=output.csv --type=csv --fields="Roll,Name,age,contact,email"
+2021-04-03T12:27:40.884+0530    connected to: mongodb://localhost/
+2021-04-03T12:27:40.997+0530    exported 4 records
+
+> db.student.drop()
+true
